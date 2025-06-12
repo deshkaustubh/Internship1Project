@@ -8,3 +8,9 @@ data class DashboardOption(
     val icon: Int,
     @StringRes val textResId: Int
 )
+
+
+data class NavItem(
+    val titleResId: Int,
+    val icon: ImageVector
+)

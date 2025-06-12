@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ABStart</string>
 
-    // Dashboard
+<!--  Dashboard-->
     <string name="my_attendance">MY ATTENDANCE</string>
     <string name="team_attendance">TEAM ATTENDANCE</string>
     <string name="my_regularization">MY REGULARIZATION</string>
@@ -13,4 +13,9 @@
     <string name="my_payslips">MY PAYSLIPS</string>
     <string name="my_resignation">MY RESIGNATION</string>
     <string name="team_resignation">TEAM RESIGNATION</string>
+
+<!-- Navigation Drawer | Excluding one's already existing above-->
+    <string name="policy">POLICY</string>
+    <string name="my_holidays">MY HOLIDAYS</string>
+    <string name="my_team_employees">MY TEAM EMPLOYEES</string>
 </resources>
