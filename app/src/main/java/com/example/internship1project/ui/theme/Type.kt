@@ -8,27 +8,42 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.internship1project.R
 
-val Manrope = FontFamily(
-    Font(R.font.manrope_bold),
-    Font(R.font.manrope_medium),
-    Font(R.font.manrope_regular)
-)
-
-
+// Set of Material typography styles
 val Typography = Typography(
-    displayLarge = TextStyle(
-        fontFamily = Manrope,
-        fontWeight = FontWeight.Bold,
-        fontSize = 36.sp
+    bodyLarge = TextStyle(
+        fontSize = 16.sp
     ),
-    displayMedium = TextStyle(
-        fontFamily = Manrope,
-        fontWeight = FontWeight.Medium,
+    bodyMedium = TextStyle(
+        fontSize = 14.sp
+    ),
+    bodySmall = TextStyle(
+        fontSize = 12.sp
+    ),
+    headlineLarge = TextStyle(
+        fontSize = 32.sp
+    ),
+    headlineMedium = TextStyle(
+        fontSize = 28.sp
+    ),
+    headlineSmall = TextStyle(
         fontSize = 24.sp
     ),
-    bodyLarge = TextStyle(
-        fontFamily = Manrope,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+    titleLarge = TextStyle(
+        fontSize = 22.sp
+    ),
+    titleMedium = TextStyle(
+        fontSize = 20.sp
+    ),
+    titleSmall = TextStyle(
+        fontSize = 18.sp
+    ),
+    labelLarge = TextStyle(
+        fontSize = 14.sp
+    ),
+    labelMedium = TextStyle(
+        fontSize = 12.sp
+    ),
+    labelSmall = TextStyle(
+        fontSize = 10.sp
     )
 )

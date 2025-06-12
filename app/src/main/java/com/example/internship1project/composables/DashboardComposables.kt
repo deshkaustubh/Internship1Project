@@ -1,142 +1,326 @@
 package com.example.internship1project.composables
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.EventAvailable
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.SupportAgent
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonElevation
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.BrushPainter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.internship1project.R
 import com.example.internship1project.data.DataSource
 import com.example.internship1project.ui.theme.Internship1ProjectTheme
 
-/*
-    Attendance
-    My Attendance: event_available
+// Complete Punch card with background gradients
+@Composable
+fun DashboardPunchCard(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier.fillMaxWidth().padding(0.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colorScheme.primary,
+//                            Color(0xFF1E1E1E), // Dark top bar color
+                            Color(0xFF1976D2), // Medium blue
+                            Color(0xFF00AAFF),  // Light blue at the bottom
+//                            Color(0xFF0057B7) // Deep blue transition
+//                            Color(0xFF80D8FF) // Softer, pastel blue
+                        )
+                    )
+                )
+                .padding(end = 24.dp, start = 24.dp, bottom = 40.dp)
+        ) {
+            // Inner Box with Whitish-Blue Fading Effect
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
+                    .height(200.dp) // Adjust height as needed
+                    .padding(top = 8.dp)
+                    .align(Alignment.TopCenter) // Position over the gradient
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color(0xFFEFEFEF).copy(alpha = 0.7f),  // Fades out at the bottom
+                                Color(0xFFEFEFEF).copy(alpha = 0.5f), // Light whitish-blue at the top
+                                Color(0xFFEFEFEF).copy(alpha = 0.3f) // Slightly deeper blue in the middle
+                            )
+                        )
+                    )
+                    .padding(16.dp)
+            ) {
+                // main element -> Punch card
+                Card(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp)),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFdaebfd)
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                            Column(
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "Thursday",
+                                    fontSize = 18.sp,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontWeight = FontWeight.Normal
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = "12 Jun",
+                                    fontSize = 19.sp,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = "2025",
+                                    fontSize = 14.sp,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    fontWeight = FontWeight.Light
+                                )
+                            }
+                        Spacer(modifier = Modifier.width(20.dp))
+                        Spacer(modifier = Modifier.height(80.dp).background(color = Color(0xFFd8e5ee)).padding(1.dp))
+                        Spacer(modifier = Modifier.width(20.dp))
 
-    Team Attendance: group
+                        Button(
+                            onClick = {},
+                            colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onSecondary, containerColor = MaterialTheme.colorScheme.secondary),
+                            elevation = ButtonDefaults.buttonElevation(13.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .padding(0.dp),
+                        ) {
+                            Text(
+                                text = "PUNCH OUT",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+                }
+            }
+        }
 
-    Regularization
-    My Regularization: check_circle
+    }
+}
 
-    Team Regularization: verified
 
-    Leaves
-    My Leaves: beach_access
+// top bar of the dashboard screen
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DashboardTopAppBar() {
+    TopAppBar(
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,//MaterialTheme.colorScheme.primary,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        title = {
+            Column(
+                modifier = Modifier.padding(start = 16.dp)
+            ) {
+                Text(
+                    "Hi, Kaustubh 👋🏼",
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    fontSize = 22.sp,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+                Text(
+                    "Accounts Manager",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    fontWeight = FontWeight.Light,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+            }
+        },
+        navigationIcon = {
+            IconButton(onClick = { /* Open Drawer */ }) {
+                Icon(
+                    imageVector = Icons.Filled.Menu,
+                    contentDescription = "Menu",
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier
+                        .width(38.dp)
+                        .height(28.dp)
+                )
+            }
+        },
+        actions = {
+            Icon(
+                painter = painterResource(id = R.drawable.hrms_applogo),
+                contentDescription = "App Logo",
+                modifier = Modifier.size(56.dp),
+                tint = MaterialTheme.colorScheme.onPrimary
+            )
+        }
+    )
+}
 
-    Team Leaves: nature_people
+// Support button - bottom right
+@Composable
+fun DashboardFloatingActionButton() {
+    FloatingActionButton(
+        onClick = { /* Handle Support Action */ },
+        containerColor = MaterialTheme.colorScheme.tertiary,
+        shape = RoundedCornerShape(50.dp),
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
+        ) {
+            Icon(
+//                imageVector = Icons.Filled.SupportAgent,
+                painter = painterResource(R.drawable.help_desk),
+                contentDescription = "SUPPORT",
+                tint = Color.Unspecified,
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "SUPPORT", color = Color.White, fontWeight = FontWeight.Bold)
+        }
+    }
+}
 
-    Expense
-    My Expense: receipt_long
-
-    Team Expense: attach_money
-
-    Payslips
-    My Payslips: description
-
-    Resignation
-    My Resignation: exit_to_app
-
-    Team Resignation: supervisor_account
- */
-
+// Lazy Vertical Grid
 @Composable
 fun DashboardGrid(modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        modifier = modifier
-            .padding(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(DataSource.dashboardOptions) { option ->
-            DashboardOptionsCard(
+            DashboardOptionCard(
+                optionText = option.textResId,
                 optionIcon = option.icon,
-                optionIconColor = option.iconColor,
-                optionText = option.textResId
             )
         }
     }
 }
 
-
+// Option card element
 @Composable
-fun DashboardOptionsCard(
-    optionIcon: ImageVector,
-    optionIconColor: Color,
+fun DashboardOptionCard(
+    optionIcon: Int,
     @StringRes optionText: Int,
     modifier: Modifier = Modifier
 ) {
-    val paddingSmall = dimensionResource(R.dimen.padding_small)
-    val paddingMedium = dimensionResource(R.dimen.padding_medium)
-    val paddingLarge = dimensionResource(R.dimen.padding_large)
-
     Card(
-        onClick = {},
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        shape = RoundedCornerShape(22.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
         modifier = modifier
-            .padding(top = 2.dp, bottom = 2.dp, start = 3.dp, end = 1.dp)
-            .width(247.dp)
-            .height(144.dp)
+            .width(280.dp)
+            .height(180.dp),
+        shape = RoundedCornerShape(15.dp),
+        elevation = CardDefaults.cardElevation(8.dp),
+        onClick = {},
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .padding(paddingSmall)
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
             Icon(
-                imageVector = optionIcon,
-                contentDescription = stringResource(optionText),
-                tint = optionIconColor,
+                painter = painterResource(id = optionIcon),
+                contentDescription = null,
+                tint = Color.Unspecified,
                 modifier = Modifier
-                    .width(53.dp)
-                    .height(27.dp)
+                    .width(64.dp)
+                    .height(72.dp)
+                    .padding(top = dimensionResource(R.dimen.padding_medium))
             )
-            Spacer(modifier = Modifier.height(paddingMedium))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Text(
-                text = stringResource(id = optionText),
+                text = stringResource(optionText),
+                fontSize = 13.sp,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Medium,
-                fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier
+                    .padding(top = 2.dp, bottom = 2.dp, start = 4.dp, end = 4.dp),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
 }
 
-@Preview(showBackground = true)
+
+@Preview(showSystemUi = true)
 @Composable
 fun DashboardComposablePreview() {
     Internship1ProjectTheme {
-        DashboardGrid()
+        DashboardOptionCard(
+            optionIcon = R.drawable.icon_1,
+            optionText = R.string.my_attendance
+        )
     }
 }

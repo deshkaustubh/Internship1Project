@@ -2,15 +2,15 @@
     <string name="app_name">ABStart</string>
 
     // Dashboard
-    <string name="my_attendance">My Attendance</string>
-    <string name="team_attendance">Team Attendance</string>
-    <string name="my_regularization">My Regularization</string>
-    <string name="team_regularization">Team Regularization</string>
-    <string name="my_leaves">My Leaves</string>
-    <string name="team_leaves">Team Leaves</string>
-    <string name="my_expense">My Expense</string>
-    <string name="team_expense">Team Expense</string>
-    <string name="my_payslips">My Payslips</string>
-    <string name="my_resignation">My Resignation</string>
-    <string name="team_resignation">Team Resignation</string>
+    <string name="my_attendance">MY ATTENDANCE</string>
+    <string name="team_attendance">TEAM ATTENDANCE</string>
+    <string name="my_regularization">MY REGULARIZATION</string>
+    <string name="team_regularization">TEAM REGULARIZATION</string>
+    <string name="my_leaves">MY LEAVES</string>
+    <string name="team_leaves">TEAM LEAVES</string>
+    <string name="my_expense">MY EXPENSE</string>
+    <string name="team_expense">TEAM EXPENSE</string>
+    <string name="my_payslips">MY PAYSLIPS</string>
+    <string name="my_resignation">MY RESIGNATION</string>
+    <string name="team_resignation">TEAM RESIGNATION</string>
 </resources>

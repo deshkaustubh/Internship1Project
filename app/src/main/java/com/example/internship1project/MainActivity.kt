@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.internship1project.screens.DashboardScreen
 import com.example.internship1project.ui.theme.Internship1ProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,9 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Internship1ProjectTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                }
+                DashboardScreen()
             }
         }
     }

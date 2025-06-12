@@ -8,16 +8,16 @@ import com.example.internship1project.model.DashboardOption
 
 object DataSource {
     val dashboardOptions = listOf(
-        DashboardOption(Icons.Filled.Event, Color(0xFF4CAF50), R.string.my_attendance), // Green
-        DashboardOption(Icons.Filled.Groups, Color(0xFF03A9F4), R.string.team_attendance), // Blue
-        DashboardOption(Icons.Filled.Edit, Color(0xFFFF9800), R.string.my_regularization), // Orange
-        DashboardOption(Icons.Filled.List, Color(0xFF673AB7), R.string.team_regularization), // Deep Purple
-        DashboardOption(Icons.Filled.DateRange, Color(0xFFE91E63), R.string.my_leaves), // Pink
-        DashboardOption(Icons.Filled.People, Color(0xFF009688), R.string.team_leaves), // Teal
-        DashboardOption(Icons.Filled.AttachMoney, Color(0xFFCDDC39), R.string.my_expense), // Lime
-        DashboardOption(Icons.Filled.Money, Color(0xFFFF5722), R.string.team_expense), // Deep Orange
-        DashboardOption(Icons.Filled.ReceiptLong, Color(0xFF9C27B0), R.string.my_payslips), // Purple
-        DashboardOption(Icons.Filled.ExitToApp, Color(0xFF607D8B), R.string.my_resignation), // Blue Grey
-        DashboardOption(Icons.Filled.WorkOff, Color(0xFF795548), R.string.team_resignation) // Brown
+        DashboardOption(R.drawable.icon_1, R.string.my_attendance), // Green
+        DashboardOption(R.drawable.icon_2, R.string.team_attendance), // Blue
+        DashboardOption(R.drawable.icon_3, R.string.my_regularization), // Orange
+        DashboardOption(R.drawable.icon_4, R.string.team_regularization), // Deep Purple
+        DashboardOption(R.drawable.icon_5, R.string.my_leaves), // Pink
+        DashboardOption(R.drawable.icon_6, R.string.team_leaves), // Teal
+        DashboardOption(R.drawable.icon_7, R.string.my_expense), // Lime
+        DashboardOption(R.drawable.icon_8, R.string.team_expense), // Deep Orange
+        DashboardOption(R.drawable.icon_9, R.string.my_payslips), // Purple
+        DashboardOption(R.drawable.icon_10, R.string.my_resignation), // Blue Grey
+        DashboardOption(R.drawable.icon_11, R.string.team_resignation) // Brown
     )
 }

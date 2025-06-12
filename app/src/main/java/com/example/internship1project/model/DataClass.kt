@@ -5,7 +5,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class DashboardOption(
-    val icon: ImageVector,
-    val iconColor: Color,
+    val icon: Int,
     @StringRes val textResId: Int
 )

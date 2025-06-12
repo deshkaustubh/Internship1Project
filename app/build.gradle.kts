@@ -59,4 +59,8 @@ dependencies {
 
     // material 3 icons
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
+
+    // accompanist - to change status bar color
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
+
 }

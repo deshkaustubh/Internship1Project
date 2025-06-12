@@ -46,7 +46,6 @@ val DarkSecondaryVariant = Color(0xFF2E7D32)  // Darker Green
 val DarkTertiary = Color(0xFFFFC107)  // Amber
 val DarkTertiaryVariant = Color(0xFFFFA000)  // Darker Amber
 
-
 val LightPrimary = Color(0xFF2196F3)  // Bright Blue
 val LightPrimaryVariant = Color(0xFF1976D2)  // Darker Blue
 
@@ -59,15 +58,15 @@ val LightTertiaryVariant = Color(0xFFFFA000)  // Darker Amber
 
 private val LightColorScheme = lightColorScheme(
 
-    primary = LightPrimary,
-    secondary = LightSecondary,
-    tertiary = LightTertiary,
-    surface = Surface,
-    background = Background,
+    primary = Color(0xFF0e47a1),
+    secondary = Color(0xFFfd9701),
+    tertiary = Color(0xFF4db24f),
+    surface = Color(0xFFfefefe),
+    background = Color(0xFFe5f2fb),
 
-    onPrimary = OnPrimaryLight,
-    onSecondary = OnSecondary,
-    onSurface = OnSurface,
+    onPrimary = Color(0xFFf4ffff),
+    onSecondary = Color(0xFFfffbcc),
+    onSurface = Color.Black,
     onBackground = OnBackground
 
     /* Other default colors to override
@@ -83,9 +82,9 @@ private val LightColorScheme = lightColorScheme(
 
 private val DarkColorScheme = darkColorScheme(
 
-    primary = DarkPrimary,
-    secondary = DarkSecondary,
-    tertiary = DarkTertiary,
+    primary = PrimaryDark,
+    secondary = SecondaryDark,
+    tertiary = Pink40,
     background = BackgroundDark,
     surface = SurfaceDark,
 
@@ -113,7 +112,7 @@ fun Internship1ProjectTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = LightColorScheme,
         typography = Typography,
         content = content
     )
