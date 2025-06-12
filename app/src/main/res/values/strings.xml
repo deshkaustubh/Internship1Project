@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Internship1Project</string>
+    <string name="app_name">ABStart</string>
+
+    // Dashboard
+    <string name="my_attendance">My Attendance</string>
+    <string name="team_attendance">Team Attendance</string>
+    <string name="my_regularization">My Regularization</string>
+    <string name="team_regularization">Team Regularization</string>
+    <string name="my_leaves">My Leaves</string>
+    <string name="team_leaves">Team Leaves</string>
+    <string name="my_expense">My Expense</string>
+    <string name="team_expense">Team Expense</string>
+    <string name="my_payslips">My Payslips</string>
+    <string name="my_resignation">My Resignation</string>
+    <string name="team_resignation">Team Resignation</string>
 </resources>
