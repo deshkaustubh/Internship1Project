@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -102,13 +104,11 @@ fun LogoutButton(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top= 16.dp, bottom = 16.dp)
-        , horizontalAlignment = Alignment.CenterHorizontally
+            .padding(top = 16.dp, bottom = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            "App Version: 2.0.12"
-            , style = MaterialTheme.typography.labelLarge
-            , fontSize = 12.sp
+            "App Version: 2.0.12", style = MaterialTheme.typography.labelLarge, fontSize = 12.sp
         )
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
@@ -116,27 +116,22 @@ fun LogoutButton(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 8.dp, end = 8.dp)
-                .weight(1f)
-            , shape = RoundedCornerShape(8.dp)
-            , onClick = {},
+                .weight(1f), shape = RoundedCornerShape(8.dp), onClick = {},
             colors = ButtonDefaults.buttonColors(
-                contentColor = MaterialTheme.colorScheme.onSecondary
-                , containerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f)
-                ,
+                contentColor = MaterialTheme.colorScheme.onSecondary,
+                containerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f),
             )
         ) {
             Row(
-                horizontalArrangement = Arrangement.Center
-                , verticalAlignment = Alignment.CenterVertically
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
                     Icons.AutoMirrored.Filled.ExitToApp, contentDescription = "Logout"
                 )
                 Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
                 Text(
-                    text = "Logout"
-                    , style = MaterialTheme.typography.labelLarge
-                    , fontSize = 16.sp
+                    text = "Logout", style = MaterialTheme.typography.labelLarge, fontSize = 16.sp
                 )
             }
         }
@@ -296,7 +291,7 @@ fun PunchBox() {
 @Composable
 fun PreviewNavigationDrawer() {
     Internship1ProjectTheme {
-    NavigationDrawer(drawerState = rememberDrawerState(initialValue = DrawerValue.Open))
+        NavigationDrawer(drawerState = rememberDrawerState(initialValue = DrawerValue.Open))
 //        LogoutButton()
     }
 }
