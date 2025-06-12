@@ -26,6 +26,7 @@ val OnSecondaryDark = Color(0xFF9EADBF)
 
 // Background & Surface
 val Background = Color(0xFFFFFFF2)
+
 val BackgroundDark = Color(0xFF141A1F)
 val OnBackground = Color(0xFF0F1417)
 val OnBackgroundDark= Color(0xFFFFFFFF)
@@ -35,12 +36,32 @@ val OnSurface = Color(0xFFFAFAFA)
 val OnSurfaceDark = Color(0xFF9EADBF)
 
 
+// New color palate
+val DarkPrimary = Color(0xFF1E88E5)  // Deep Blue
+val DarkPrimaryVariant = Color(0xFF1565C0)  // Darker Blue
+
+val DarkSecondary = Color(0xFF43A047)  // Green
+val DarkSecondaryVariant = Color(0xFF2E7D32)  // Darker Green
+
+val DarkTertiary = Color(0xFFFFC107)  // Amber
+val DarkTertiaryVariant = Color(0xFFFFA000)  // Darker Amber
+
+
+val LightPrimary = Color(0xFF2196F3)  // Bright Blue
+val LightPrimaryVariant = Color(0xFF1976D2)  // Darker Blue
+
+val LightSecondary = Color(0xFF4CAF50)  // Green
+val LightSecondaryVariant = Color(0xFF388E3C)  // Darker Green
+
+val LightTertiary = Color(0xFFFFC107)  // Amber
+val LightTertiaryVariant = Color(0xFFFFA000)  // Darker Amber
+
 
 private val LightColorScheme = lightColorScheme(
 
-    primary = PrimaryLight,
-    secondary = Secondary,
-    tertiary = Pink80,
+    primary = LightPrimary,
+    secondary = LightSecondary,
+    tertiary = LightTertiary,
     surface = Surface,
     background = Background,
 
@@ -62,9 +83,9 @@ private val LightColorScheme = lightColorScheme(
 
 private val DarkColorScheme = darkColorScheme(
 
-    primary = PrimaryDark,
-    secondary = SecondaryDark,
-    tertiary = Pink40,
+    primary = DarkPrimary,
+    secondary = DarkSecondary,
+    tertiary = DarkTertiary,
     background = BackgroundDark,
     surface = SurfaceDark,
 
