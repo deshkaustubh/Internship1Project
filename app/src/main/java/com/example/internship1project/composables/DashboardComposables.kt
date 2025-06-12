@@ -88,7 +88,7 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
-                    .height(200.dp) // Adjust height as needed
+                    .height(150.dp) // Adjust height as needed
                     .padding(top = 8.dp)
                     .align(Alignment.TopCenter) // Position over the gradient
                     .background(
@@ -100,13 +100,13 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             )
                         )
                     )
-                    .padding(16.dp)
+                    .padding(12.dp)
             ) {
                 // main element -> Punch card
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp)),
+                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp, topStart = 2.dp, topEnd = 2.dp)),
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFdaebfd)
                     )
@@ -122,27 +122,27 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             ) {
                                 Text(
                                     text = "Thursday",
-                                    fontSize = 18.sp,
+                                    fontSize = 13.sp,
                                     style = MaterialTheme.typography.bodySmall,
                                     fontWeight = FontWeight.Normal
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text(
                                     text = "12 Jun",
-                                    fontSize = 19.sp,
+                                    fontSize = 14.sp,
                                     style = MaterialTheme.typography.bodySmall,
                                     fontWeight = FontWeight.Bold
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text(
                                     text = "2025",
-                                    fontSize = 14.sp,
+                                    fontSize = 10.sp,
                                     style = MaterialTheme.typography.bodySmall,
                                     fontWeight = FontWeight.Light
                                 )
                             }
                         Spacer(modifier = Modifier.width(20.dp))
-                        Spacer(modifier = Modifier.height(80.dp).background(color = Color(0xFFd8e5ee)).padding(1.dp))
+                        Spacer(modifier = Modifier.height(40.dp).background(color = Color(0xFFd8e5ee)).padding(1.dp))
                         Spacer(modifier = Modifier.width(20.dp))
 
                         Button(
@@ -156,7 +156,7 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             Text(
                                 text = "PUNCH OUT",
                                 style = MaterialTheme.typography.titleLarge,
-                                fontSize = 16.sp,
+                                fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold
                             )
                         }
@@ -187,16 +187,16 @@ fun DashboardTopAppBar() {
                     "Hi, Kaustubh 👋🏼",
                     style = MaterialTheme.typography.headlineLarge,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    fontSize = 22.sp,
-                    modifier = Modifier.padding(top = 16.dp)
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(top = 12.dp)
                 )
                 Text(
                     "Accounts Manager",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onPrimary,
                     fontWeight = FontWeight.Light,
-                    fontSize = 18.sp,
-                    modifier = Modifier.padding(bottom = 16.dp)
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(bottom = 12.dp)
                 )
             }
         },
@@ -207,8 +207,8 @@ fun DashboardTopAppBar() {
                     contentDescription = "Menu",
                     tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier
-                        .width(38.dp)
-                        .height(28.dp)
+                        .width(28.dp)
+                        .height(21.dp)
                 )
             }
         },
@@ -255,7 +255,7 @@ fun DashboardGrid(modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+//        verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(DataSource.dashboardOptions) { option ->
@@ -276,8 +276,9 @@ fun DashboardOptionCard(
 ) {
     Card(
         modifier = modifier
-            .width(280.dp)
-            .height(180.dp),
+            .padding(bottom = 8.dp, top = 8.dp)
+            .width(140.dp)
+            .height(120.dp),
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(8.dp),
         onClick = {},
@@ -288,15 +289,15 @@ fun DashboardOptionCard(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
+            Spacer(modifier = Modifier.height(16.dp))
             Icon(
                 painter = painterResource(id = optionIcon),
                 contentDescription = null,
                 tint = Color.Unspecified,
                 modifier = Modifier
-                    .width(64.dp)
-                    .height(72.dp)
-                    .padding(top = dimensionResource(R.dimen.padding_medium))
+                    .width(46.dp)
+                    .height(44.dp)
+                    .padding(top = dimensionResource(R.dimen.padding_small))
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Text(
@@ -305,7 +306,7 @@ fun DashboardOptionCard(
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .padding(top = 2.dp, bottom = 2.dp, start = 4.dp, end = 4.dp),
+                    .padding( bottom = 2.dp, start = 4.dp, end = 4.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -318,9 +319,12 @@ fun DashboardOptionCard(
 @Composable
 fun DashboardComposablePreview() {
     Internship1ProjectTheme {
-        DashboardOptionCard(
-            optionIcon = R.drawable.icon_1,
-            optionText = R.string.my_attendance
-        )
+//        DashboardOptionCard(
+//            optionIcon = R.drawable.icon_1,
+//            optionText = R.string.my_attendance
+//        )
+//        DashboardPunchCard()
+//        DashboardGrid()
+        DashboardTopAppBar()
     }
 }
