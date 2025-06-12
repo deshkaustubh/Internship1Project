@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.EventAvailable
@@ -81,14 +82,14 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                         )
                     )
                 )
-                .padding(end = 24.dp, start = 24.dp, bottom = 40.dp)
+                .padding(end = 24.dp, start = 24.dp, bottom = 32.dp)
         ) {
             // Inner Box with Whitish-Blue Fading Effect
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
-                    .height(150.dp) // Adjust height as needed
+                    .height(140.dp) // Adjust height as needed
                     .padding(top = 8.dp)
                     .align(Alignment.TopCenter) // Position over the gradient
                     .background(
@@ -100,13 +101,13 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             )
                         )
                     )
-                    .padding(12.dp)
+                    .padding(top= 8.dp, bottom = 12.dp, start = 12.dp, end = 12.dp)
             ) {
                 // main element -> Punch card
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp, topStart = 2.dp, topEnd = 2.dp)),
+                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp, topStart = 1.dp, topEnd = 1.dp)),
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFdaebfd)
                     )
@@ -244,7 +245,7 @@ fun DashboardFloatingActionButton() {
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "SUPPORT", color = Color.White, fontWeight = FontWeight.Bold)
+            Text(text = "SUPPORT", color = Color.White, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelSmall)
         }
     }
 }
@@ -252,13 +253,14 @@ fun DashboardFloatingActionButton() {
 // Lazy Vertical Grid
 @Composable
 fun DashboardGrid(modifier: Modifier = Modifier) {
+    val lazyGridState = rememberLazyGridState()
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        modifier = modifier,
-//        verticalArrangement = Arrangement.spacedBy(8.dp),
+        state = lazyGridState,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = modifier,
     ) {
-        items(DataSource.dashboardOptions) { option ->
+        items(DataSource.dashboardOptions, key = { it.textResId }) { option ->
             DashboardOptionCard(
                 optionText = option.textResId,
                 optionIcon = option.icon,
@@ -295,14 +297,15 @@ fun DashboardOptionCard(
                 contentDescription = null,
                 tint = Color.Unspecified,
                 modifier = Modifier
-                    .width(46.dp)
-                    .height(44.dp)
+//                    .width(46.dp)
+//                    .height(44.dp)
+                    .size(46.dp)
                     .padding(top = dimensionResource(R.dimen.padding_small))
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Text(
                 text = stringResource(optionText),
-                fontSize = 13.sp,
+                fontSize = 10.sp,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
