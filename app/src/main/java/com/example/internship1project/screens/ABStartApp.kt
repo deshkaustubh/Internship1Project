@@ -2,16 +2,15 @@ package com.example.internship1project.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.internship1project.R
 import com.example.internship1project.composables.CommonScreen
-import com.example.internship1project.screens.dashboardCardScreens.MyAttendanceScreen
+import com.example.internship1project.screens.dashboard.MyAttendanceScreen
+import com.example.internship1project.screens.dashboard.MyPaySlipsScreen
 
 enum class ABStartApp() {
     Splash,
@@ -53,9 +52,8 @@ enum class DashboardScreens {
 @Composable
 fun ABStartApp(navController: NavHostController = rememberNavController()) {
 
-    val backStackEntry by navController.currentBackStackEntryAsState()
-
-    val currentScreen = backStackEntry?.destination?.route ?: ABStartApp.Splash.name
+//    val backStackEntry by navController.currentBackStackEntryAsState()
+//    val currentScreen = backStackEntry?.destination?.route ?: ABStartApp.Splash.name
 
     NavHost(
         navController = navController,
@@ -134,7 +132,11 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
         }
 //        composable(route = DashboardScreens.MyExpense.name) { MyExpenseScreen() }
 //        composable(route = DashboardScreens.TeamExpense.name) { TeamExpenseScreen() }
-//        composable(route = DashboardScreens.MyPayslips.name) { MyPayslipsScreen() }
+        composable(route = DashboardScreens.MyPayslips.name) {
+            MyPaySlipsScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
 //        composable(route = DashboardScreens.MyResignation.name) { MyResignationScreen() }
 //        composable(route = DashboardScreens.TeamResignation.name) { TeamResignationScreen() }
     }

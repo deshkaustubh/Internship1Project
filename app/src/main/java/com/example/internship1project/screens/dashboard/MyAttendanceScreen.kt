@@ -1,4 +1,4 @@
-package com.example.internship1project.screens.dashboardCardScreens
+package com.example.internship1project.screens.dashboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

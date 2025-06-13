@@ -1,4 +1,4 @@
-package com.example.internship1project.screens.dashboardCardScreens
+package com.example.internship1project.screens.dashboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ReceiptLong
 import androidx.compose.material.icons.filled.Tune
-import androidx.compose.material.icons.outlined.ReportGmailerrorred
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,11 +29,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.internship1project.R
-import com.example.internship1project.ui.theme.Internship1ProjectTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,7 +53,7 @@ fun MyPaySlipsScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = (stringResource(id = R.string.my_attendance)),
+                        text = (stringResource(id = R.string.my_payslips)),
                         style = MaterialTheme.typography.headlineLarge,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
@@ -97,8 +95,8 @@ fun MyPaySlipsScreen(
         ) {
 
             Icon(
-                imageVector = Icons.Outlined.ReportGmailerrorred,
-                contentDescription = stringResource(R.string.no_records_found),
+                imageVector = Icons.AutoMirrored.Outlined.ReceiptLong,
+                contentDescription = stringResource(R.string.no_payslips_found),
                 tint = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.size(100.dp)
             )
@@ -106,7 +104,7 @@ fun MyPaySlipsScreen(
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
             Text(
-                text = stringResource(R.string.no_records_found)
+                text = stringResource(R.string.no_payslips_found)
             )
         }
     }
