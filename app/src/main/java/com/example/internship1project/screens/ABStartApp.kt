@@ -40,10 +40,17 @@ enum class DashboardAndDrawerScreens {
     MyResignation,
     TeamResignation,
 
+    //Dashboard Floating Action Button
+    DashboardFloatingActionButton,
+
     // drawer Screen unique items
     Policy,
     MyHolidays,
     MyTeamEmployees
+}
+
+enum class ScreenToScreen {
+    HelpSupportToRaiseTicket
 }
 
 @Composable
@@ -106,7 +113,30 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
                             else -> ABStartApp.Dashboard.name
                         }
                     )
+                },
+                onFloatingActionButtonClicked = {
+                    navController.navigate(DashboardAndDrawerScreens.DashboardFloatingActionButton.name)
                 }
+            )
+        }
+
+
+        // Help and Support Screen from Dashboard Floating Action Button
+
+        composable(route= DashboardAndDrawerScreens.DashboardFloatingActionButton.name){
+            HelpAndSupportScreen(
+                navigateBack = { navController.popBackStack() },
+                onRaiseTicketButtonClick = {
+                    navController.navigate(ScreenToScreen.HelpSupportToRaiseTicket.name)
+                }
+            )
+        }
+
+        // Raise a Ticket Screen From Help and Support
+
+        composable(route = ScreenToScreen.HelpSupportToRaiseTicket.name) {
+            RaiseTicketScreen(
+                navigateBack = {navController.popBackStack()}
             )
         }
 

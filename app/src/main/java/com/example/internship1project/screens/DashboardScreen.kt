@@ -47,7 +47,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
 @Composable
-fun DashboardScreen(onCardClicked: (Int) -> Unit, onDrawerOptionClicked: (Int) -> Unit) {
+fun DashboardScreen(onCardClicked: (Int) -> Unit, onDrawerOptionClicked: (Int) -> Unit, onFloatingActionButtonClicked:()-> Unit ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
@@ -75,7 +75,11 @@ fun DashboardScreen(onCardClicked: (Int) -> Unit, onDrawerOptionClicked: (Int) -
         }
         Scaffold(
             topBar = { DashboardTopAppBar(drawerState) },
-            floatingActionButton = { DashboardFloatingActionButton() },
+            floatingActionButton = {
+                DashboardFloatingActionButton(
+                    onClick = { onFloatingActionButtonClicked() }
+                )
+            },
             containerColor = MaterialTheme.colorScheme.background,
             contentWindowInsets = WindowInsets.safeContent
         ) { innerPadding ->

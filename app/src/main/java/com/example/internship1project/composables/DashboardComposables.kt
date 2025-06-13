@@ -70,7 +70,9 @@ import kotlinx.coroutines.launch
 @Composable
 fun DashboardPunchCard(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier.fillMaxWidth().padding(0.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(0.dp)
     ) {
         Box(
             modifier = Modifier
@@ -107,13 +109,20 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             )
                         )
                     )
-                    .padding(top= 8.dp, bottom = 12.dp, start = 12.dp, end = 12.dp)
+                    .padding(top = 8.dp, bottom = 12.dp, start = 12.dp, end = 12.dp)
             ) {
                 // main element -> Punch card
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp, topStart = 1.dp, topEnd = 1.dp)),
+                        .clip(
+                            RoundedCornerShape(
+                                bottomStart = 32.dp,
+                                bottomEnd = 32.dp,
+                                topStart = 1.dp,
+                                topEnd = 1.dp
+                            )
+                        ),
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFdaebfd)
                     )
@@ -149,7 +158,10 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                                 )
                             }
                         Spacer(modifier = Modifier.width(20.dp))
-                        Spacer(modifier = Modifier.height(40.dp).background(color = Color(0xFFd8e5ee)).padding(1.dp))
+                        Spacer(modifier = Modifier
+                            .height(40.dp)
+                            .background(color = Color(0xFFd8e5ee))
+                            .padding(1.dp))
                         Spacer(modifier = Modifier.width(20.dp))
 
                         Button(
@@ -233,9 +245,9 @@ fun DashboardTopAppBar(drawerState: DrawerState ) {
 
 // Support button - bottom right
 @Composable
-fun DashboardFloatingActionButton() {
+fun DashboardFloatingActionButton(onClick: () -> Unit) {
     FloatingActionButton(
-        onClick = { /* Handle Support Action */ },
+        onClick = { onClick() } ,
         containerColor = MaterialTheme.colorScheme.tertiary,
         shape = RoundedCornerShape(50.dp),
         modifier = Modifier.padding(16.dp)

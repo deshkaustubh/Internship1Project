@@ -19,8 +19,29 @@
     <string name="my_holidays">MY HOLIDAYS</string>
     <string name="my_team_employees">MY TEAM EMPLOYEES</string>
 
-<!--    No records Found-->
+<!--    Other Screens-->
+    <string name="help_and_support">HELP AND SUPPORT</string>
+    <string name="raise_ticket">RAISE A TICKET</string>
+
+    <!--    No records Found-->
     <string name="no_records_found">No Records Found</string>
     <string name="no_payslips_found">No Payslips Found</string>
     <string name="no_policies_found">No Policies Found</string>
+    <string name="no_issue_tickets_found">No Issue Tickets Found</string>
+
+<!--    Help and Support-->
+    <string name="help_and_support_button">Raise a New Ticket</string>
+    <string name="help_and_support_description">You have no active support tickets. If you need help, please raise a new ticket</string>
+
+<!--    Raise Ticket-->
+    <string name="issue_type">Issue Type</string>
+    <string name="issue_describe">Describe Your Issue in Detail</string>
+    <string name="issue_upload">Upload File (Optional)</string>
+    <string name="issue_type_bug_report">Bug Report</string>
+    <string name="issue_type_feature_request">Feature Request</string>
+    <string name="issue_type_other">Other</string>
+    <string name="issue_type_select_issue">Select issue type</string>
+    <string name="issue_description_field">Describe your issue in detail</string>
+    <string name="issue_upload_file_prompt">Upload file to help us understand your issue better</string>
+    <string name="issue_submit_button">Submit</string>
 </resources>
