@@ -10,7 +10,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.internship1project.R
 import com.example.internship1project.composables.CommonScreen
 import com.example.internship1project.screens.dashboard.MyAttendanceScreen
+import com.example.internship1project.screens.dashboard.MyExpenseScreen
 import com.example.internship1project.screens.dashboard.MyPaySlipsScreen
+import com.example.internship1project.screens.dashboard.MyResignationScreen
+import com.example.internship1project.screens.dashboard.TeamExpenseScreen
+import com.example.internship1project.screens.dashboard.TeamResignationScreen
 
 enum class ABStartApp() {
     Splash,
@@ -32,22 +36,6 @@ enum class DashboardScreens {
     MyResignation,
     TeamResignation
 }
-//
-//enum class DashboardScreens(val route: String) {
-//    Dashboard("dashboard"),
-//    MyAttendance("my_attendance"),
-//    TeamAttendance("team_attendance"),
-//    MyRegularization("my_regularization"),
-//    TeamRegularization("team_regularization"),
-//    MyLeaves("my_leaves"),
-//    TeamLeaves("team_leaves"),
-//    MyExpense("my_expense"),
-//    TeamExpense("team_expense"),
-//    MyPayslips("my_payslips"),
-//    MyResignation("my_resignation"),
-//    TeamResignation("team_resignation")
-//}
-
 
 @Composable
 fun ABStartApp(navController: NavHostController = rememberNavController()) {
@@ -130,15 +118,36 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
                 screenTitle = R.string.team_leaves
             )
         }
-//        composable(route = DashboardScreens.MyExpense.name) { MyExpenseScreen() }
-//        composable(route = DashboardScreens.TeamExpense.name) { TeamExpenseScreen() }
+        composable(route = DashboardScreens.MyExpense.name) {
+            MyExpenseScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = DashboardScreens.TeamExpense.name) {
+            TeamExpenseScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
         composable(route = DashboardScreens.MyPayslips.name) {
             MyPaySlipsScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
-//        composable(route = DashboardScreens.MyResignation.name) { MyResignationScreen() }
-//        composable(route = DashboardScreens.TeamResignation.name) { TeamResignationScreen() }
+
+        composable(route = DashboardScreens.MyResignation.name) {
+            MyResignationScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = DashboardScreens.TeamResignation.name) {
+            TeamResignationScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
     }
 }
 
