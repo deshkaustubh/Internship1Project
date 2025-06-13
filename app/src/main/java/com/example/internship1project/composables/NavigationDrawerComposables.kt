@@ -60,11 +60,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.internship1project.R
 import com.example.internship1project.data.DataSource.navItems
+import com.example.internship1project.model.NavItem
 import com.example.internship1project.ui.theme.Internship1ProjectTheme
 
 
 @Composable
-fun NavigationDrawer(drawerState: DrawerState, modifier: Modifier = Modifier) {
+fun NavigationDrawer(onClickOfDrawerOption: (Int) -> Unit, modifier: Modifier = Modifier) {
     ModalDrawerSheet {
         ProfileBox(modifier = modifier)
 
@@ -88,7 +89,7 @@ fun NavigationDrawer(drawerState: DrawerState, modifier: Modifier = Modifier) {
                         )
                     },
                     selected = false,
-                    onClick = { }
+                    onClick = { onClickOfDrawerOption(item.titleResId)}
                 )
             }
         }
@@ -291,7 +292,7 @@ fun PunchBox() {
 @Composable
 fun PreviewNavigationDrawer() {
     Internship1ProjectTheme {
-        NavigationDrawer(drawerState = rememberDrawerState(initialValue = DrawerValue.Open))
+//        NavigationDrawer(drawerState = rememberDrawerState(initialValue = DrawerValue.Open))
 //        LogoutButton()
     }
 }

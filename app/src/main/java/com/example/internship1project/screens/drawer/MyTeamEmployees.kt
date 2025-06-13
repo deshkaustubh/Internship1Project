@@ -36,7 +36,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyScreen(
+fun MyTeamEmployeesScreen(
     navigateBack: () -> Unit
 ) {
     val systemUiController = rememberSystemUiController()

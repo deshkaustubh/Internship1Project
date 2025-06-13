@@ -15,6 +15,10 @@ import com.example.internship1project.screens.dashboard.MyPaySlipsScreen
 import com.example.internship1project.screens.dashboard.MyResignationScreen
 import com.example.internship1project.screens.dashboard.TeamExpenseScreen
 import com.example.internship1project.screens.dashboard.TeamResignationScreen
+import com.example.internship1project.screens.drawer.MyHolidaysScreen
+import com.example.internship1project.screens.drawer.MyTeamEmployeesScreen
+import com.example.internship1project.screens.drawer.PolicyScreen
+import java.security.Policy
 
 enum class ABStartApp() {
     Splash,
@@ -22,7 +26,7 @@ enum class ABStartApp() {
 }
 
 
-enum class DashboardScreens {
+enum class DashboardAndDrawerScreens {
     Dashboard,
     MyAttendance,
     TeamAttendance,
@@ -34,7 +38,12 @@ enum class DashboardScreens {
     TeamExpense,
     MyPayslips,
     MyResignation,
-    TeamResignation
+    TeamResignation,
+
+    // drawer Screen unique items
+    Policy,
+    MyHolidays,
+    MyTeamEmployees
 }
 
 @Composable
@@ -64,18 +73,37 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
                 onCardClicked = { textResId ->
                     navController.navigate(
                         when (textResId) {
-                            R.string.my_attendance -> DashboardScreens.MyAttendance.name
-                            R.string.team_attendance -> DashboardScreens.TeamAttendance.name
-                            R.string.my_regularization -> DashboardScreens.MyRegularization.name
-                            R.string.team_regularization -> DashboardScreens.TeamRegularization.name
-                            R.string.my_leaves -> DashboardScreens.MyLeaves.name
-                            R.string.team_leaves -> DashboardScreens.TeamLeaves.name
-                            R.string.my_expense -> DashboardScreens.MyExpense.name
-                            R.string.team_expense -> DashboardScreens.TeamExpense.name
-                            R.string.my_payslips -> DashboardScreens.MyPayslips.name
-                            R.string.my_resignation -> DashboardScreens.MyResignation.name
-                            R.string.team_resignation -> DashboardScreens.TeamResignation.name
-                            else -> DashboardScreens.Dashboard.name
+                            R.string.my_attendance -> DashboardAndDrawerScreens.MyAttendance.name
+                            R.string.team_attendance -> DashboardAndDrawerScreens.TeamAttendance.name
+                            R.string.my_regularization -> DashboardAndDrawerScreens.MyRegularization.name
+                            R.string.team_regularization -> DashboardAndDrawerScreens.TeamRegularization.name
+                            R.string.my_leaves -> DashboardAndDrawerScreens.MyLeaves.name
+                            R.string.team_leaves -> DashboardAndDrawerScreens.TeamLeaves.name
+                            R.string.my_expense -> DashboardAndDrawerScreens.MyExpense.name
+                            R.string.team_expense -> DashboardAndDrawerScreens.TeamExpense.name
+                            R.string.my_payslips -> DashboardAndDrawerScreens.MyPayslips.name
+                            R.string.my_resignation -> DashboardAndDrawerScreens.MyResignation.name
+                            R.string.team_resignation -> DashboardAndDrawerScreens.TeamResignation.name
+                            else -> ABStartApp.Dashboard.name
+                        }
+                    )
+                },
+                onDrawerOptionClicked = { titleResId ->
+                    navController.navigate(
+                        when (titleResId) {
+                            R.string.my_attendance -> DashboardAndDrawerScreens.MyAttendance.name
+                            R.string.team_attendance -> DashboardAndDrawerScreens.TeamAttendance.name
+                            R.string.my_regularization -> DashboardAndDrawerScreens.MyRegularization.name
+                            R.string.team_regularization -> DashboardAndDrawerScreens.TeamRegularization.name
+                            R.string.my_leaves -> DashboardAndDrawerScreens.MyLeaves.name
+                            R.string.team_leaves -> DashboardAndDrawerScreens.TeamLeaves.name
+                            R.string.my_expense -> DashboardAndDrawerScreens.MyExpense.name
+                            R.string.team_expense -> DashboardAndDrawerScreens.TeamExpense.name
+                            R.string.my_payslips -> DashboardAndDrawerScreens.MyPayslips.name
+                            R.string.policy -> DashboardAndDrawerScreens.Policy.name
+                            R.string.my_holidays -> DashboardAndDrawerScreens.MyHolidays.name
+                            R.string.my_team_employees -> DashboardAndDrawerScreens.MyTeamEmployees.name
+                            else -> ABStartApp.Dashboard.name
                         }
                     )
                 }
@@ -83,71 +111,88 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
         }
 
         // Individual Screens
-        composable(route = DashboardScreens.MyAttendance.name) {
+        composable(route = DashboardAndDrawerScreens.MyAttendance.name) {
             MyAttendanceScreen(
                 navigateBack = { navController.navigateUp() },
             )
         }
-        composable(route = DashboardScreens.TeamAttendance.name) {
+        composable(route = DashboardAndDrawerScreens.TeamAttendance.name) {
             CommonScreen(
                 navigateBack = { navController.navigateUp() },
                 screenTitle = R.string.team_attendance
             )
         }
-        composable(route = DashboardScreens.MyRegularization.name) {
+        composable(route = DashboardAndDrawerScreens.MyRegularization.name) {
             CommonScreen(
                 navigateBack = { navController.navigateUp() },
                 screenTitle = R.string.my_regularization
             )
         }
-        composable(route = DashboardScreens.TeamRegularization.name) {
+        composable(route = DashboardAndDrawerScreens.TeamRegularization.name) {
             CommonScreen(
                 navigateBack = { navController.navigateUp() },
                 screenTitle = R.string.team_regularization
             )
         }
-        composable(route = DashboardScreens.MyLeaves.name) {
+        composable(route = DashboardAndDrawerScreens.MyLeaves.name) {
             CommonScreen(
                 navigateBack = { navController.navigateUp() },
                 screenTitle = R.string.my_leaves
             )
         }
-        composable(route = DashboardScreens.TeamLeaves.name) {
+        composable(route = DashboardAndDrawerScreens.TeamLeaves.name) {
             CommonScreen(
                 navigateBack = { navController.navigateUp() },
                 screenTitle = R.string.team_leaves
             )
         }
-        composable(route = DashboardScreens.MyExpense.name) {
+        composable(route = DashboardAndDrawerScreens.MyExpense.name) {
             MyExpenseScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(route = DashboardScreens.TeamExpense.name) {
+        composable(route = DashboardAndDrawerScreens.TeamExpense.name) {
             TeamExpenseScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(route = DashboardScreens.MyPayslips.name) {
+        composable(route = DashboardAndDrawerScreens.MyPayslips.name) {
             MyPaySlipsScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(route = DashboardScreens.MyResignation.name) {
+        composable(route = DashboardAndDrawerScreens.MyResignation.name) {
             MyResignationScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(route = DashboardScreens.TeamResignation.name) {
+        composable(route = DashboardAndDrawerScreens.TeamResignation.name) {
             TeamResignationScreen(
                 navigateBack = { navController.popBackStack() }
             )
         }
+        // Navigation Drawer Unique Screens
+        composable(route = DashboardAndDrawerScreens.Policy.name) {
+            PolicyScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
 
+        composable(route = DashboardAndDrawerScreens.MyHolidays.name) {
+            MyHolidaysScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = DashboardAndDrawerScreens.MyTeamEmployees.name) {
+            MyTeamEmployeesScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
     }
 }
 
