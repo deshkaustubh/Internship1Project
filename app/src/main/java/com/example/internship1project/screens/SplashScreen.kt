@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.internship1project.R
 import com.example.internship1project.ui.theme.Internship1ProjectTheme
@@ -49,19 +50,22 @@ import kotlinx.coroutines.delay
 
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen(
+    modifier: Modifier = Modifier,
+    onNavigate: () -> Unit
+) {
     var isVisible by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
     LaunchedEffect(Unit) {
-        delay(500) // Start animation after 500ms
+        delay(200) // Start animation after 500ms
         isVisible = true
-        delay(2000) // Show splash for 2 seconds
-        navController.navigate("home") // Navigate to main screen
+        delay(900) // Show splash for 800 milli seconds
+        onNavigate() // Navigate to main screen
     }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = Color(0xFF87CEEB)),
         contentAlignment = Alignment.Center
@@ -161,7 +165,9 @@ fun ColorText(
 @Composable
 fun SplashPreview() {
     Internship1ProjectTheme {
-        SplashScreen(navController = rememberNavController())
+        SplashScreen(
+            onNavigate = {  }
+        )
     }
 }
 

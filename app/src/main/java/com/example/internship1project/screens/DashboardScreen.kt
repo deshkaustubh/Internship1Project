@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +30,12 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.internship1project.R
 import com.example.internship1project.composables.DashboardFloatingActionButton
 import com.example.internship1project.composables.DashboardGrid
@@ -39,9 +46,8 @@ import com.example.internship1project.ui.theme.Internship1ProjectTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
-
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(navController: NavHostController = rememberNavController()) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
@@ -93,6 +99,6 @@ fun DashboardScreen() {
 @Composable
 fun DashboardPreview() {
     Internship1ProjectTheme {
-        DashboardScreen()
+//        DashboardScreen()
     }
 }
