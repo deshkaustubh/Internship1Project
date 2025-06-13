@@ -3,6 +3,7 @@ package com.example.internship1project.composables
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -258,7 +259,10 @@ fun DashboardFloatingActionButton() {
 
 // Lazy Vertical Grid
 @Composable
-fun DashboardGrid(modifier: Modifier = Modifier) {
+fun DashboardGrid(
+    onCardClick : (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
     val lazyGridState = rememberLazyGridState()
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -270,6 +274,7 @@ fun DashboardGrid(modifier: Modifier = Modifier) {
             DashboardOptionCard(
                 optionText = option.textResId,
                 optionIcon = option.icon,
+                onClick = {onCardClick(option.textResId)}
             )
         }
     }
@@ -280,16 +285,18 @@ fun DashboardGrid(modifier: Modifier = Modifier) {
 fun DashboardOptionCard(
     optionIcon: Int,
     @StringRes optionText: Int,
+    onClick: ()-> Unit ,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
             .padding(bottom = 8.dp, top = 8.dp)
             .width(140.dp)
-            .height(120.dp),
+            .height(120.dp)
+            .clickable { onClick() },
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(8.dp),
-        onClick = {},
+        onClick = {onClick()},
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(

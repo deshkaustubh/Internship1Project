@@ -18,4 +18,7 @@
     <string name="policy">POLICY</string>
     <string name="my_holidays">MY HOLIDAYS</string>
     <string name="my_team_employees">MY TEAM EMPLOYEES</string>
+
+<!--    No records Found-->
+    <string name="no_records_found">No Records Found</string>
 </resources>

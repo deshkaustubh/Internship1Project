@@ -47,7 +47,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
 @Composable
-fun DashboardScreen(navController: NavHostController = rememberNavController()) {
+fun DashboardScreen(onCardClicked: (Int) -> Unit) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
@@ -88,6 +88,7 @@ fun DashboardScreen(navController: NavHostController = rememberNavController()) 
                 DashboardPunchCard()
                 Spacer(modifier = Modifier.height(8.dp))
                 DashboardGrid(
+                    onCardClick = onCardClicked,
                     modifier = Modifier.padding(16.dp)
                 )
             }
