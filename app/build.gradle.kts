@@ -63,4 +63,7 @@ dependencies {
     // accompanist - to change status bar color
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 
+    // splash screen implementation
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }
