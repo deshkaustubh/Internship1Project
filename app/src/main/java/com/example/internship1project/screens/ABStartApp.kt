@@ -190,7 +190,7 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
 
         composable(route = DashboardAndDrawerScreens.MyTeamEmployees.name) {
             MyTeamEmployeesScreen(
-                navigateBack = { navController.popBackStack() }
+                navigateBack = { navController.popBackStack()}
             )
         }
     }
