@@ -21,4 +21,6 @@
 
 <!--    No records Found-->
     <string name="no_records_found">No Records Found</string>
+    <string name="no_payslips_found">No Payslips Found</string>
+    <string name="no_policies_found">No Policies Found</string>
 </resources>
