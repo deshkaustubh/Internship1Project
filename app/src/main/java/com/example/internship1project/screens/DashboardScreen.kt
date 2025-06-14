@@ -52,15 +52,19 @@ fun DashboardScreen(onCardClicked: (Int) -> Unit, onDrawerOptionClicked: (Int) -
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
     val navigationBarColor = Color(0xFFe5f2fb)
+    val scope = rememberCoroutineScope()
 
     ModalNavigationDrawer(
         drawerContent = {
             Column(
                 modifier = Modifier
-                    .width(if (drawerState.isOpen) 300.dp else 100.dp) // Partial width initially
+                    .width(if (drawerState.isOpen) 280.dp else 0.dp) // Partial width initially
             ) {
                 NavigationDrawer(
-                    onClickOfDrawerOption = onDrawerOptionClicked,
+                    onClickOfDrawerOption = {optionId->
+                        onDrawerOptionClicked(optionId)
+                        scope.launch { drawerState.close() }
+                    },
                     modifier = Modifier.padding(
                         start = dimensionResource(R.dimen.padding_medium),
                         end = dimensionResource(R.dimen.padding_medium)

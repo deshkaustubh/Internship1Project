@@ -45,6 +45,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -66,6 +70,9 @@ import com.example.internship1project.ui.theme.Internship1ProjectTheme
 
 @Composable
 fun NavigationDrawer(onClickOfDrawerOption: (Int) -> Unit, modifier: Modifier = Modifier) {
+
+    var drawerExpanded by remember { mutableStateOf(false) }
+
     ModalDrawerSheet {
         ProfileBox(modifier = modifier)
 
