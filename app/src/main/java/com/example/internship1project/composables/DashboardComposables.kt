@@ -26,6 +26,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.EventAvailable
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.SupportAgent
+import androidx.compose.material.icons.outlined.ReportProblem
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonElevation
@@ -43,7 +45,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -56,6 +62,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -164,8 +171,17 @@ fun DashboardPunchCard(modifier: Modifier = Modifier) {
                             .padding(1.dp))
                         Spacer(modifier = Modifier.width(20.dp))
 
+                        var showDialog by remember { mutableStateOf(false) }
+
+                        if (showDialog) {
+                            PunchOutDialogBox(
+                                onDismiss = {showDialog = !showDialog},
+                                onConfirm = {showDialog = !showDialog}
+                            )
+                        }
+
                         Button(
-                            onClick = {},
+                            onClick = {showDialog = !showDialog},
                             colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onSecondary, containerColor = MaterialTheme.colorScheme.secondary),
                             elevation = ButtonDefaults.buttonElevation(13.dp),
                             shape = RoundedCornerShape(8.dp),
@@ -343,6 +359,73 @@ fun DashboardOptionCard(
 }
 
 
+@Composable
+fun PunchOutDialogBox(
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        modifier = Modifier.background(Color.White, shape = RoundedCornerShape(16.dp)),
+        title = {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.width(280.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.ReportProblem,
+                    contentDescription = "Warning",
+                    modifier = Modifier.size(40.dp),
+                    tint = MaterialTheme.colorScheme.secondary
+                )
+            }
+        },
+        text = {
+            Column(
+                modifier = Modifier.width(280.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Are you sure,",
+                    fontWeight = FontWeight.ExtraBold,
+                    textAlign = TextAlign.Center,
+                    fontSize = 16.sp
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+                Text(
+                    text = "you want to punch out?",
+                    textAlign = TextAlign.Center,
+                    fontSize = 16.sp
+                )
+            }
+        },
+        confirmButton = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(
+                    onClick = onDismiss,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF4C4C))
+                ) {
+                    Text("NO", color = Color.White)
+                }
+                Button(
+                    onClick = onConfirm,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
+                ) {
+                    Text("YES", color = Color.White)
+                }
+            }
+        }
+    )
+}
+
+
 @Preview(showSystemUi = true)
 @Composable
 fun DashboardComposablePreview() {
@@ -354,5 +437,7 @@ fun DashboardComposablePreview() {
 //        DashboardPunchCard()
 //        DashboardGrid()
 //        DashboardTopAppBar()
+
+        DashboardPunchCard()
     }
 }
