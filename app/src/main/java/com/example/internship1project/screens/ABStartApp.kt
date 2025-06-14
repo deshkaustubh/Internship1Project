@@ -16,9 +16,9 @@ import com.example.internship1project.screens.dashboard.MyResignationScreen
 import com.example.internship1project.screens.dashboard.TeamExpenseScreen
 import com.example.internship1project.screens.dashboard.TeamResignationScreen
 import com.example.internship1project.screens.drawer.MyHolidaysScreen
+import com.example.internship1project.screens.drawer.MyHolidaysScreenContent
 import com.example.internship1project.screens.drawer.MyTeamEmployeesScreen
 import com.example.internship1project.screens.drawer.PolicyScreen
-import java.security.Policy
 
 enum class ABStartApp() {
     Splash,
