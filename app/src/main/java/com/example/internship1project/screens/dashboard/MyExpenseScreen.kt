@@ -113,7 +113,7 @@ fun MyExpenseScreen(
         },
         floatingActionButton = {
             Button(
-                onClick = {} ,
+                onClick = {},
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(14.dp),
@@ -132,7 +132,7 @@ fun MyExpenseScreen(
         floatingActionButtonPosition = FabPosition.Center,
         contentWindowInsets = WindowInsets.safeContent
     ) { innerPadding ->
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
@@ -152,128 +152,138 @@ fun ExpenseDetailCard(modifier: Modifier = Modifier) {
     var expanded by remember { mutableStateOf(false) }
 
     Box(
-        modifier = modifier.fillMaxWidth().padding(14.dp).border(1.dp,MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(8.dp))
-    ){
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(14.dp)
+            .border(1.dp, MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(8.dp))
     ) {
-        Column(
-            modifier = modifier.fillMaxWidth()
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            )
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            Column(
+                modifier = modifier.fillMaxWidth()
             ) {
                 Row(
-                    modifier = modifier, verticalAlignment = Alignment.CenterVertically
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.Hotel,
-                        contentDescription = stringResource(R.string.expense_accommodation),
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
-                    Text(
-                        text = stringResource(R.string.expense_accommodation),
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp
-                    )
-                }
-                AppliedFilterChip()
-            }// Row Ends Here
+                    Row(
+                        modifier = modifier, verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Hotel,
+                            contentDescription = stringResource(R.string.expense_accommodation),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
+                        Text(
+                            text = stringResource(R.string.expense_accommodation),
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 12.sp
+                        )
+                    }
+                    AppliedFilterChip()
+                }// Row Ends Here
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(
-                    modifier = Modifier.padding(8.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = stringResource(R.string.expense_date_label),
-                        fontWeight = FontWeight.Light,
-                        fontSize = 12.sp
-                    )
-                    Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
-                    Text(
-                        text = "12-Jun-2025",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 13.sp
-                    )
-                }
+                    Column(
+                        modifier = Modifier.padding(8.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = stringResource(R.string.expense_date_label),
+                            fontWeight = FontWeight.Light,
+                            fontSize = 12.sp
+                        )
+                        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
+                        Text(
+                            text = "12-Jun-2025",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 13.sp
+                        )
+                    }
 
-                Column(
-                    modifier = Modifier.padding(8.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    Column(
+                        modifier = Modifier.padding(8.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = stringResource(R.string.expense_applied_date_label),
+                            fontWeight = FontWeight.Light,
+                            fontSize = 12.sp
+                        )
+                        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
+                        Text(
+                            text = "14-Jun-2025",
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+                // new row starts
+                ExpenseAmountChip()
+                // Description starts here
+                HorizontalDivider(thickness = 1.dp, color = MaterialTheme.colorScheme.primary)
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = stringResource(R.string.expense_applied_date_label),
-                        fontWeight = FontWeight.Light,
-                        fontSize = 12.sp
-                    )
-                    Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
-                    Text(
-                        text = "14-Jun-2025",
+                        text = stringResource(R.string.expense_description),
+                        fontWeight = FontWeight.Bold,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold
+                        modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
                     )
-                }
-            }
-            // new row starts
-            ExpenseAmountChip()
-            // Description starts here
-            HorizontalDivider(thickness = 1.dp, color = MaterialTheme.colorScheme.primary)
+                    IconButton(
+                        onClick = { expanded = !expanded }
+                    ) {
 
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(8.dp)
-                , horizontalArrangement = Arrangement.SpaceBetween
-                , verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.expense_description ),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 13.sp,
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                )
-                IconButton(
-                    onClick = {expanded = !expanded}
-                ) {
-
-                    Icon(
-                        if (expanded) Icons.Outlined.KeyboardArrowUp else Icons.Outlined.KeyboardArrowDown,
-                        contentDescription = "Open or Close Description"
-                    )
+                        Icon(
+                            if (expanded) Icons.Outlined.KeyboardArrowUp else Icons.Outlined.KeyboardArrowDown,
+                            contentDescription = "Open or Close Description"
+                        )
+                    }
                 }
-            }
-            if (expanded) {
-                Text(
-                    text = "I have dedicated myself to crafting a seamless and intuitive user experience, ensuring that every interaction feels natural and efficient. My approach goes beyond just functionality—I focus on creating an environment where users can navigate effortlessly, making complex tasks feel simple. Through meticulous attention to detail, I have refined UI elements to enhance accessibility and responsiveness, ensuring that every component serves a meaningful purpose.",
-                    textAlign = TextAlign.Justify,
-                    fontSize = 12.sp,
-                    modifier = Modifier.padding(start = dimensionResource( R.dimen.padding_medium), end = dimensionResource( R.dimen.padding_medium)
+                if (expanded) {
+                    Text(
+                        text = "I have dedicated myself to crafting a seamless and intuitive user experience, ensuring that every interaction feels natural and efficient. My approach goes beyond just functionality—I focus on creating an environment where users can navigate effortlessly, making complex tasks feel simple. Through meticulous attention to detail, I have refined UI elements to enhance accessibility and responsiveness, ensuring that every component serves a meaningful purpose.",
+                        textAlign = TextAlign.Justify,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(
+                            start = dimensionResource(R.dimen.padding_medium),
+                            end = dimensionResource(R.dimen.padding_medium)
+                        )
                     )
-                )
-                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
-                Row(
-                    horizontalArrangement = Arrangement.End,
-                    modifier = Modifier.fillMaxWidth().padding(8.dp)
-                ) {
-                    CancelExpenseButton()
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+                    Row(
+                        horizontalArrangement = Arrangement.End,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                    ) {
+                        CancelExpenseButton()
+                    }
                 }
             }
         }
     }
-}}
+}
 
 @Composable
 fun AppliedFilterChip() {
@@ -282,7 +292,13 @@ fun AppliedFilterChip() {
     FilterChip(
         selected = selected,
         onClick = { selected = !selected },
-        label = { Text(text = "APPLIED", style = MaterialTheme.typography.labelMedium, fontSize = 10.sp) },
+        label = {
+            Text(
+                text = "APPLIED",
+                style = MaterialTheme.typography.labelMedium,
+                fontSize = 10.sp
+            )
+        },
         colors = FilterChipDefaults.filterChipColors(
             disabledContainerColor = MaterialTheme.colorScheme.tertiary,
             disabledLabelColor = MaterialTheme.colorScheme.onTertiary,
@@ -342,6 +358,6 @@ fun CancelExpenseButton() {
 @Composable
 fun ExpensePreview() {
     Internship1ProjectTheme {
-        MyExpenseScreen {  }
+        MyExpenseScreen { }
     }
 }
