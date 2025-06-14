@@ -1,9 +1,12 @@
-package com.example.internship1project.screens
+package com.example.internship1project.screens.nestedscreens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,21 +14,25 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -35,39 +42,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.internship1project.R
-import com.example.internship1project.ui.theme.Internship1ProjectTheme
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.outlined.ArrowBack
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
+import androidx.compose.ui.unit.sp
+import com.example.internship1project.ui.theme.Internship1ProjectTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RaiseTicketScreen(navigateBack: () -> Unit) {
+fun ClaimExpenseScreen(
+    navigateBack: () -> Unit
+) {
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
     val navigationBarColor = Color(0xFFe5f2fb)
@@ -82,7 +75,7 @@ fun RaiseTicketScreen(navigateBack: () -> Unit) {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = (stringResource(id = R.string.raise_ticket)),
+                        text = "ADD EXPENSE",
                         style = MaterialTheme.typography.headlineLarge,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
@@ -94,29 +87,48 @@ fun RaiseTicketScreen(navigateBack: () -> Unit) {
                 ),
                 navigationIcon = {
                     IconButton(
-                        onClick = { navigateBack() }
+                        onClick = {navigateBack()}
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Menu",
                             tint = Color.Black,
                         )
                     }
                 }
             )
+        }, floatingActionButton = {
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(14.dp),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "Claim Expense",
+                    fontSize = 16.sp
+                )
+            }
         },
-        floatingActionButton = { SubmitButton()},
         floatingActionButtonPosition = FabPosition.Center,
         contentWindowInsets = WindowInsets.safeContent
     ) { innerPadding ->
-        RaiseTicket(
-            modifier = Modifier.padding(innerPadding)
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+            , horizontalAlignment = Alignment.CenterHorizontally
+            , verticalArrangement = Arrangement.Center
+        ) {
+            AddExpense()
+        }
     }
 }
 
+
 @Composable
-fun RaiseTicket(modifier: Modifier = Modifier) {
+fun AddExpense(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -125,38 +137,56 @@ fun RaiseTicket(modifier: Modifier = Modifier) {
     ) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = stringResource(R.string.issue_type),
+            text = "Expense Type",
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge
         )
-        IssueTypeDropdown()
-        Spacer(modifier = Modifier.height(32.dp))
+        ExpenseTypeDropdown()
+        Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = stringResource(R.string.issue_describe),
+            text = "Expense Amount",
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge
         )
         Spacer(modifier = Modifier.height(8.dp))
-        IssueDescriptionField()
+        ExpenseAmountField()
         Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = stringResource(R.string.issue_upload),
+            text = "Expense Date",
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge
         )
         Spacer(modifier = Modifier.height(8.dp))
-        UploadFileCard()
+        ExpenseDateField()
+        Spacer(modifier = Modifier.height(32.dp))
+        Text(
+            text = "Enter Description",
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.bodyLarge
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        ExpenseDescriptionField()
+        Spacer(modifier = Modifier.height(32.dp))
+        Text(
+            text = "Attach Receipt",
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.bodyLarge
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        UploadReceiptCard()
     }
 }
 
 @Composable
-fun IssueTypeDropdown() {
+fun ExpenseTypeDropdown() {
     var expanded by remember { mutableStateOf(false) }
-    val items = listOf(stringResource(R.string.issue_type_bug_report), stringResource(R.string.issue_type_feature_request), stringResource(R.string.issue_type_other))
-    var selectedText by remember { mutableStateOf("Select issue type") }
+    val items = listOf("Accommodation", "Travel", "Food")
+    var selectedText by remember { mutableStateOf("Select expense type") }
 
     Box(
         modifier = Modifier
@@ -205,9 +235,8 @@ fun IssueTypeDropdown() {
     }
 }
 
-
 @Composable
-fun IssueDescriptionField() {
+fun ExpenseAmountField() {
     var value by remember { mutableStateOf("") }
 
     BasicTextField(
@@ -216,7 +245,7 @@ fun IssueDescriptionField() {
         textStyle = MaterialTheme.typography.bodyMedium,
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(32.dp)
             .border(1.dp, Color.Black, shape = MaterialTheme.shapes.medium)
             .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium)
             .padding(8.dp),
@@ -224,7 +253,7 @@ fun IssueDescriptionField() {
             Box(modifier = Modifier.fillMaxSize()) {
                 if (value.isEmpty()) {
                     Text(
-                        text = stringResource(R.string.issue_describe),
+                        text = "      $ 0.00",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
                     )
@@ -236,11 +265,69 @@ fun IssueDescriptionField() {
 }
 
 @Composable
-fun UploadFileCard() {
+fun ExpenseDateField() {
+    var value by remember { mutableStateOf("") }
+
+    BasicTextField(
+        value = value,
+        onValueChange = { value = it },
+        textStyle = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(32.dp)
+            .border(1.dp, Color.Black, shape = MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium)
+            .padding(8.dp),
+        decorationBox = { innerTextField ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                if (value.isEmpty()) {
+                    Text(
+                        text = "      Select Date",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    )
+                }
+                innerTextField()
+            }
+        }
+    )
+}
+
+@Composable
+fun ExpenseDescriptionField() {
+    var value by remember { mutableStateOf("") }
+
+    BasicTextField(
+        value = value,
+        onValueChange = { value = it },
+        textStyle = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp)
+            .border(1.dp, Color.Black, shape = MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium)
+            .padding(8.dp),
+        decorationBox = { innerTextField ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                if (value.isEmpty()) {
+                    Text(
+                        text = "Provide a brief description of the expense....",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    )
+                }
+                innerTextField()
+            }
+        }
+    )
+}
+
+@Composable
+fun UploadReceiptCard() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(80.dp)
 //            .border(
 //                width = 1.dp,
 //                color = Color.Black,
@@ -264,7 +351,7 @@ fun UploadFileCard() {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = stringResource(R.string.issue_upload_file_prompt),
+                text = "Upload a file or drag and drop \n PNG, JPEG, PDF up to 10 MB",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center
             )
@@ -272,28 +359,14 @@ fun UploadFileCard() {
     }
 }
 
-@Composable
-fun SubmitButton() {
-    Button(
-        onClick = {},
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(14.dp),
-        shape = RoundedCornerShape(8.dp)
-    ) {
-        Text(
-            text = stringResource(R.string.issue_submit_button),
-            fontSize = 16.sp
-        )
-    }
-}
+
 
 
 @Preview
 @Composable
-fun RaiseTicketScreenPreview() {
+fun ClaimExpenseScreenPreview() {
     Internship1ProjectTheme {
-        RaiseTicketScreen(
+        ClaimExpenseScreen(
             navigateBack = {}
         )
     }

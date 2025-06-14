@@ -64,7 +64,8 @@ import kotlin.math.exp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyExpenseScreen(
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    onApplyExpenseButtonClick:() -> Unit
 ) {
     val systemUiController = rememberSystemUiController()
     val statusBarColor = Color(0xFF0a3579)
@@ -113,7 +114,7 @@ fun MyExpenseScreen(
         },
         floatingActionButton = {
             Button(
-                onClick = {},
+                onClick = {onApplyExpenseButtonClick()},
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(14.dp),
@@ -358,6 +359,9 @@ fun CancelExpenseButton() {
 @Composable
 fun ExpensePreview() {
     Internship1ProjectTheme {
-        MyExpenseScreen { }
+        MyExpenseScreen(
+            navigateBack = {  },
+            onApplyExpenseButtonClick = {}
+        )
     }
 }

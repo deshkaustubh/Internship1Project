@@ -19,6 +19,7 @@ import com.example.internship1project.screens.drawer.MyHolidaysScreen
 import com.example.internship1project.screens.drawer.MyHolidaysScreenContent
 import com.example.internship1project.screens.drawer.MyTeamEmployeesScreen
 import com.example.internship1project.screens.drawer.PolicyScreen
+import com.example.internship1project.screens.nestedscreens.ClaimExpenseScreen
 
 enum class ABStartApp() {
     Splash,
@@ -50,7 +51,8 @@ enum class DashboardAndDrawerScreens {
 }
 
 enum class ScreenToScreen {
-    HelpSupportToRaiseTicket
+    HelpSupportToRaiseTicket,
+    MyExpenseToAddExpense
 }
 
 @Composable
@@ -132,8 +134,15 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
             )
         }
 
-        // Raise a Ticket Screen From Help and Support
 
+        // Add Expense Screen From My Expense
+        composable(route = ScreenToScreen.MyExpenseToAddExpense.name) {
+            ClaimExpenseScreen(
+                navigateBack = {navController.popBackStack()}
+            )
+        }
+
+        // Raise a Ticket Screen From Help and Support
         composable(route = ScreenToScreen.HelpSupportToRaiseTicket.name) {
             RaiseTicketScreen(
                 navigateBack = {navController.popBackStack()}
@@ -178,7 +187,10 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
         }
         composable(route = DashboardAndDrawerScreens.MyExpense.name) {
             MyExpenseScreen(
-                navigateBack = { navController.popBackStack() }
+                navigateBack = { navController.popBackStack() },
+                onApplyExpenseButtonClick = {
+                    navController.navigate(route = ScreenToScreen.MyExpenseToAddExpense.name)
+                }
             )
         }
 
