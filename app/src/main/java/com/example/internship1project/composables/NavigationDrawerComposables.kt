@@ -174,7 +174,7 @@ fun ProfileBox(modifier: Modifier = Modifier) {
                         fontSize = 16.sp
                     )
                     Text(
-                        text = "SAN-ILOVEABStart",
+                        text = "SAN-github.com/DeshKaustubh",
                         style = MaterialTheme.typography.titleSmall,
                         fontSize = 12.sp
                     )
