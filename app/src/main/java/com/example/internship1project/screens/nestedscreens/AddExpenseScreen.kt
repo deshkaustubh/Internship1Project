@@ -106,7 +106,7 @@ fun ClaimExpenseScreen(
                 shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
-                    text = "Claim Expense",
+                    text = "Add Expense",
                     fontSize = 16.sp
                 )
             }
