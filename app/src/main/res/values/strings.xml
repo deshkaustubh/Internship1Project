@@ -44,4 +44,19 @@
     <string name="issue_description_field">Describe your issue in detail</string>
     <string name="issue_upload_file_prompt">Upload file to help us understand your issue better</string>
     <string name="issue_submit_button">Submit</string>
+
+<!--    My Expense Screen-->
+        <string name="expense_accommodation">ACCOMMODATION</string>
+        <string name="expense_food">FOOD</string>
+        <string name="expense_travelling">TRAVELLING</string>
+        <string name="expense_date_label">Expense Date</string>
+        <string name="expense_applied_date_label">Applied Date</string>
+        <string name="expense_amount_label">Amount: $ 10000.00</string>
+        <string name="expense_description_label">Description:</string>
+        <string name="expense_applied_status">APPLIED</string>
+        <string name="expense_submitted_status">SUBMITTED</string>
+        <string name="expense_description">Description</string>
+        <string name="expense_cancel">Cancel Expense</string>
+        <string name="expense_apply_expense_button">Apply Expense</string>
+
 </resources>
