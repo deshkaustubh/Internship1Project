@@ -118,6 +118,9 @@ fun ABStartApp(navController: NavHostController = rememberNavController()) {
                 },
                 onFloatingActionButtonClicked = {
                     navController.navigate(DashboardAndDrawerScreens.DashboardFloatingActionButton.name)
+                },
+                navigateBack = {
+                    navController.navigate(ABStartApp.Dashboard.name)
                 }
             )
         }
