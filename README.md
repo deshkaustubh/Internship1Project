@@ -58,6 +58,7 @@ This is my internship assignment submission for **IDMS InfoTech**. It’s a UI/U
 
 ## 🙋‍♂️ About Me
 
+- 📄 **Portfolio**: [Kaustubh Deshpande](https://kaustubhdeshpande.netlify.app/)
 - 🧑‍💼 **LinkedIn**: [Kaustubh Deshpande](https://www.linkedin.com/in/deshkaustubh/)
 - 💻 **GitHub**: [@DeshKaustubh](https://github.com/deshkaustubh)
 - 📧 **Email**: contact.DeshKaustubh@gmail.com
