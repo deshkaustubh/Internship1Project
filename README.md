@@ -142,11 +142,17 @@ graph TD
     G --> M[📞 Support Options]
     M --> D
     
-    style A fill:#e1f5fe
-    style D fill:#f3e5f5
-    style E fill:#e8f5e8
-    style F fill:#fff3e0
-    style G fill:#fce4ec
+    classDef launch fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef dashboard fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef drawer fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef ticket fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef support fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class A launch
+    class D dashboard
+    class E drawer
+    class F,K,L ticket
+    class G,M support
 ```
 
 ### 🏗️ Component Architecture
@@ -194,12 +200,15 @@ graph LR
     A --> N
     A --> O
     
-    style A fill:#e3f2fd
-    style H fill:#f1f8e9
-    style I fill:#f1f8e9
-    style J fill:#f1f8e9
-    style K fill:#fff8e1
-    style L fill:#fff8e1
+    classDef mainActivity fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px
+    classDef composables fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    classDef dataLayer fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class A mainActivity
+    class H,I,J composables
+    class K,L dataLayer
+    class M,N,O theme
 ```
 
 ### 📱 Screen Component Relationships
@@ -245,14 +254,15 @@ flowchart TB
     N --> P
     L --> P
     
-    style A fill:#e8f5e8
-    style E fill:#e3f2fd
-    style L fill:#fff3e0
-    style M fill:#fff3e0
-    style N fill:#fff3e0
-    style O fill:#fce4ec
-    style P fill:#fce4ec
-    style Q fill:#fce4ec
+    classDef dashboard fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef drawer fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px
+    classDef components fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class A,B,C,D,F dashboard
+    class E,I,J,K drawer
+    class L,M,N components
+    class O,P,Q theme
 ```
 
 ### 🔄 Data Flow & State Management
