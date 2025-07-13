@@ -142,17 +142,19 @@ graph TD
     G --> M[📞 Support Options]
     M --> D
     
-    classDef launch fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef dashboard fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef drawer fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    classDef ticket fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef support fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef launch fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef dashboard fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef drawer fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+    classDef ticket fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    classDef support fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
+    classDef actions fill:#f0f4c3,stroke:#827717,stroke-width:2px,color:#000
     
     class A launch
     class D dashboard
-    class E drawer
+    class E,H drawer
     class F,K,L ticket
     class G,M support
+    class I,J actions
 ```
 
 ### 🏗️ Component Architecture
@@ -200,12 +202,14 @@ graph LR
     A --> N
     A --> O
     
-    classDef mainActivity fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px
-    classDef composables fill:#f1f8e9,stroke:#33691e,stroke-width:2px
-    classDef dataLayer fill:#fff8e1,stroke:#f57f17,stroke-width:2px
-    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef mainActivity fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#000
+    classDef navigation fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px,color:#000
+    classDef composables fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    classDef dataLayer fill:#fff8e1,stroke:#f57f17,stroke-width:2px,color:#000
+    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
     
     class A mainActivity
+    class B navigation
     class H,I,J composables
     class K,L dataLayer
     class M,N,O theme
@@ -254,15 +258,17 @@ flowchart TB
     N --> P
     L --> P
     
-    classDef dashboard fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    classDef drawer fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px
-    classDef components fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef dashboard fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+    classDef drawer fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#000
+    classDef components fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    classDef theme fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
+    classDef actions fill:#f0f4c3,stroke:#827717,stroke-width:2px,color:#000
     
     class A,B,C,D,F dashboard
     class E,I,J,K drawer
     class L,M,N components
     class O,P,Q theme
+    class G,H actions
 ```
 
 ### 🔄 Data Flow & State Management
