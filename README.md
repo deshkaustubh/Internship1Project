@@ -130,7 +130,7 @@ Internship1Project/
 |--------------------|------------------------------------------------------------------------------------------------|
 | 📁 GitHub Repo     | [Internship1Project](https://github.com/deshkaustubh/Internship1Project)                       |
 | 📄 Assignment Doc  | [Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)  |
-| 📱 APK Download    | [Google Drive](https://drive.google.com/file/d/13ERnz1mdpe7fMNBiHTbCLtEfdZjIRSPt/view?usp=sharing) |
+| 📱 APK Download    | [Google Drive](https://drive.google.com/drive/folders/13WECiLo_CL5bj3i5aNohm5lRE-4npkZ5?usp=sharing) |
 | 🎥 Demo Video      | [Watch on YouTube](https://youtu.be/VCCrv0ZHp7w)                                               |
 
 ---
