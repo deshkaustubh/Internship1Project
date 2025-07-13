@@ -47,12 +47,12 @@ This is my internship assignment submission for **IDMS InfoTech**. It’s a UI/U
 
 ## 🔗 Project & Resource Links
 
-| Type               | Link                                                                 |
-|--------------------|----------------------------------------------------------------------|
-| 📁 GitHub Repo     | [Internship1Project](https://github.com/deshkaustubh/Internship1Project) |
-| 📄 Assignment Doc  | [Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI) |
-| 📱 APK Download    | *Will update latest APK soon*                                        |
-| 🎥 Demo Video      | [Watch on YouTube](https://youtu.be/VCCrv0ZHp7w)                     |
+| Type               | Link                                                                                            |
+|--------------------|-------------------------------------------------------------------------------------------------|
+| 📁 GitHub Repo     | [Internship1Project](https://github.com/deshkaustubh/Internship1Project)                        |
+| 📄 Assignment Doc  | [Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)   |
+| 📱 APK Download    | [Google Drive]([Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)) |
+| 🎥 Demo Video      | [Watch on YouTube](https://youtu.be/VCCrv0ZHp7w)                                                |
 
 ---
 
