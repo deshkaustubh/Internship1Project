@@ -118,6 +118,174 @@ Internship1Project/
 
 ---
 
+## 🔄 Project Flow & Architecture
+
+### 📊 Navigation Flow
+```mermaid
+graph TD
+    A[🚀 App Launch] --> B[🖼️ ABStartApp<br/>App Icon Screen]
+    B --> C[⏱️ SplashScreen<br/>Animated Splash]
+    C --> D[📊 DashboardScreen<br/>Main Dashboard]
+    
+    D --> E[📂 NavigationDrawer]
+    E --> F[🎫 RaiseTicketScreen]
+    E --> G[🆘 HelpAndSupportScreen]
+    E --> H[🔄 Back to Dashboard]
+    
+    D --> I[📱 Punch Card Actions]
+    D --> J[🎯 Quick Actions]
+    
+    F --> K[📝 Ticket Form]
+    K --> L[✅ Ticket Submitted]
+    L --> D
+    
+    G --> M[📞 Support Options]
+    M --> D
+    
+    style A fill:#e1f5fe
+    style D fill:#f3e5f5
+    style E fill:#e8f5e8
+    style F fill:#fff3e0
+    style G fill:#fce4ec
+```
+
+### 🏗️ Component Architecture
+```mermaid
+graph LR
+    subgraph "🎨 UI Layer"
+        A[MainActivity.kt] --> B[📱 Navigation Host]
+        B --> C[🖼️ ABStartApp]
+        B --> D[⏱️ SplashScreen]
+        B --> E[📊 DashboardScreen]
+        B --> F[🎫 RaiseTicketScreen]
+        B --> G[🆘 HelpAndSupportScreen]
+    end
+    
+    subgraph "🧩 Composables"
+        H[CommonScreenComposable]
+        I[DashboardComposables]
+        J[NavigationDrawerComposables]
+    end
+    
+    subgraph "📂 Data Layer"
+        K[model/]
+        L[data/]
+    end
+    
+    subgraph "🎨 Theme"
+        M[ui/theme/Color.kt]
+        N[ui/theme/Theme.kt]
+        O[ui/theme/Type.kt]
+    end
+    
+    E --> I
+    E --> J
+    C --> H
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    
+    I --> K
+    J --> K
+    H --> L
+    
+    A --> M
+    A --> N
+    A --> O
+    
+    style A fill:#e3f2fd
+    style H fill:#f1f8e9
+    style I fill:#f1f8e9
+    style J fill:#f1f8e9
+    style K fill:#fff8e1
+    style L fill:#fff8e1
+```
+
+### 📱 Screen Component Relationships
+```mermaid
+flowchart TB
+    subgraph "📊 Dashboard Ecosystem"
+        A[📊 DashboardScreen] --> B[🔄 Punch Card]
+        A --> C[🎯 Quick Actions]
+        A --> D[📈 Stats Cards]
+        A --> E[📂 Navigation Drawer]
+        
+        B --> F[⏰ Punch In/Out]
+        C --> G[🎫 Raise Ticket]
+        C --> H[🆘 Help & Support]
+        
+        E --> I[👤 Profile Header]
+        E --> J[📋 Menu Items]
+        E --> K[🚪 Logout]
+    end
+    
+    subgraph "🧩 Reusable Components"
+        L[CommonScreenComposable]
+        M[DashboardComposables]
+        N[NavigationDrawerComposables]
+    end
+    
+    subgraph "🎨 Material 3 Theme"
+        O[Color Scheme]
+        P[Typography]
+        Q[Component Styling]
+    end
+    
+    A --> M
+    E --> N
+    G --> L
+    H --> L
+    
+    M --> O
+    N --> O
+    L --> O
+    
+    M --> P
+    N --> P
+    L --> P
+    
+    style A fill:#e8f5e8
+    style E fill:#e3f2fd
+    style L fill:#fff3e0
+    style M fill:#fff3e0
+    style N fill:#fff3e0
+    style O fill:#fce4ec
+    style P fill:#fce4ec
+    style Q fill:#fce4ec
+```
+
+### 🔄 Data Flow & State Management
+```mermaid
+sequenceDiagram
+    participant U as 👤 User
+    participant MA as 📱 MainActivity
+    participant DS as 📊 DashboardScreen
+    participant DC as 🧩 DashboardComposables
+    participant ND as 📂 NavigationDrawer
+    participant RT as 🎫 RaiseTicketScreen
+    
+    U->>MA: App Launch
+    MA->>DS: Navigate to Dashboard
+    DS->>DC: Load Components
+    DC->>DS: Render UI Elements
+    DS->>U: Display Dashboard
+    
+    U->>DS: Open Navigation Drawer
+    DS->>ND: Show Drawer
+    ND->>U: Display Menu Options
+    
+    U->>ND: Select "Raise Ticket"
+    ND->>RT: Navigate to Ticket Screen
+    RT->>U: Show Ticket Form
+    
+    U->>RT: Submit Ticket
+    RT->>DS: Navigate Back
+    DS->>U: Show Success Message
+```
+
+---
+
 ## 💡 What's More?
 
 > "This is my first time building a multi-screen, component-rich app using Compose. It challenged me to think in terms of structure, state, and visual clarity—something I truly enjoyed and plan to keep improving!"
