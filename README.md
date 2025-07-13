@@ -31,11 +31,90 @@ This is my internship assignment submission for **IDMS InfoTech**. It’s a UI/U
 
 ---
 
-### 🎨 5. Other Improvements
-- 🎯 **Color consistency**: Bottom nav bar and status bar match screen backgrounds.
-- 🌐 **Localization-ready**: 70% of strings moved to `strings.xml`.
-- 💫 **Animations**: Subtle transitions for a modern feel.
-- 📱 **Adaptive layout**: Components scale better across screen sizes.
+## 📁 Project Structure
+
+```
+Internship1Project/
+├── 📄 README.md                    # Project documentation
+├── ⚙️ build.gradle.kts             # Root build configuration
+├── ⚙️ settings.gradle.kts          # Gradle settings
+├── 📝 gradle.properties            # Gradle properties
+├── 🔧 gradlew & gradlew.bat        # Gradle wrapper scripts
+├── 🔐 local.properties             # Local SDK paths
+│
+├── 📂 app/
+│   ├── 📄 build.gradle.kts         # App-level build config
+│   ├── 🛡️ proguard-rules.pro       # ProGuard rules
+│   │
+│   └── 📂 src/
+│       ├── 📂 main/
+│       │   ├── 📄 AndroidManifest.xml
+│       │   ├── 🖼️ ic_launcher-playstore.png
+│       │   │
+│       │   ├── 📂 java/com/example/internship1project/
+│       │   │   ├── 📱 MainActivity.kt           # Entry point & Navigation
+│       │   │   │
+│       │   │   ├── 📂 screens/
+│       │   │   │   ├── 🖼️ ABStartApp.kt         # App Icon Screen
+│       │   │   │   ├── ⏱️ SplashScreen.kt       # Animated Splash
+│       │   │   │   ├── 📊 DashboardScreen.kt    # Main Dashboard
+│       │   │   │   ├── 🎫 RaiseTicketScreen.kt  # Ticket Creation
+│       │   │   │   ├── 🆘 HelpAndSupportScreen.kt # Support Page
+│       │   │   │   ├── 📂 dashboard/           # Dashboard components
+│       │   │   │   ├── 📂 drawer/              # Drawer components
+│       │   │   │   └── 📂 nestedscreens/       # Nested screen views
+│       │   │   │
+│       │   │   ├── 📂 composables/
+│       │   │   │   ├── 🧩 CommonScreenComposable.kt    # Shared UI components
+│       │   │   │   ├── 📊 DashboardComposables.kt      # Dashboard-specific UI
+│       │   │   │   └── 📂 NavigationDrawerComposables.kt # Drawer UI components
+│       │   │   │
+│       │   │   ├── 📂 data/                    # Data layer
+│       │   │   ├── 📂 model/                   # Data models
+│       │   │   └── 📂 ui/theme/                # Material 3 theming
+│       │   │       ├── Color.kt
+│       │   │       ├── Theme.kt
+│       │   │       └── Type.kt
+│       │   │
+│       │   └── 📂 res/
+│       │       ├── 🖼️ drawable/          # Icons, vectors, images
+│       │       ├── 🎨 values/            # Colors, strings, dimensions
+│       │       │   ├── colors.xml
+│       │       │   ├── strings.xml       # 70% localization-ready
+│       │       │   └── themes.xml
+│       │       └── 📱 mipmap/            # App launcher icons
+│       │
+│       ├── 📂 test/                     # Unit tests
+│       └── 📂 androidTest/              # Instrumentation tests
+│
+└── 📂 gradle/
+    ├── 📄 libs.versions.toml           # Version catalog
+    └── 📂 wrapper/                     # Gradle wrapper files
+```
+
+### 🏗️ Key Components
+
+| Component | Description |
+|-----------|-------------|
+| 📱 **MainActivity** | Entry point with Jetpack Navigation setup |
+| 🖼️ **ABStartApp** | Light theme consistent app icon display |
+| ⏱️ **SplashScreen** | Animated splash with static trademark |
+| 📊 **DashboardScreen** | Main dashboard with scrollable punch-out card |
+| 📂 **NavigationDrawer** | Material 3 drawer with static header |
+| 🧩 **Composables** | Reusable UI components for screens |
+| 🎨 **ui/theme/** | Color scheme, typography, and Material 3 theming |
+| 📂 **data/** | Data layer and business logic |
+| 📂 **model/** | Data models and entities |
+
+### 🛠️ Technology Stack
+
+- **🏗️ Framework**: Jetpack Compose
+- **🎨 Design System**: Material 3
+- **🧭 Navigation**: Jetpack Navigation Compose
+- **📱 Min SDK**: API 24 (Android 7.0)
+- **🎯 Target SDK**: API 34 (Android 14+)
+- **🔧 Build Tool**: Gradle with Kotlin DSL
+- **⚡ Language**: Kotlin 100%
 
 ---
 
@@ -47,12 +126,12 @@ This is my internship assignment submission for **IDMS InfoTech**. It’s a UI/U
 
 ## 🔗 Project & Resource Links
 
-| Type               | Link                                                                                            |
-|--------------------|-------------------------------------------------------------------------------------------------|
-| 📁 GitHub Repo     | [Internship1Project](https://github.com/deshkaustubh/Internship1Project)                        |
-| 📄 Assignment Doc  | [Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)   |
-| 📱 APK Download    | [Google Drive]([Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)) |
-| 🎥 Demo Video      | [Watch on YouTube](https://youtu.be/VCCrv0ZHp7w)                                                |
+| Type               | Link                                                                                           |
+|--------------------|------------------------------------------------------------------------------------------------|
+| 📁 GitHub Repo     | [Internship1Project](https://github.com/deshkaustubh/Internship1Project)                       |
+| 📄 Assignment Doc  | [Google Doc](https://docs.google.com/document/d/1VyhMWtHfzEkkQpxr-y6jGBDuCH7aY4LABI6Nh_lODCI)  |
+| 📱 APK Download    | [Google Drive](https://drive.google.com/file/d/13ERnz1mdpe7fMNBiHTbCLtEfdZjIRSPt/view?usp=sharing) |
+| 🎥 Demo Video      | [Watch on YouTube](https://youtu.be/VCCrv0ZHp7w)                                               |
 
 ---
 
@@ -76,4 +155,3 @@ This is my internship assignment submission for **IDMS InfoTech**. It’s a UI/U
 ---
 
 > ⭐ _Thank you for taking the time to review this project. Open to feedback and collaboration!_
-
